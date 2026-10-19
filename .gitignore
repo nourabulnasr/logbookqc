@@ -1,0 +1,6 @@
+raw/
+data/*.npz
+__pycache__/
+godmode-trash/
+*.pt
+data/train.log

@@ -1,0 +1,184 @@
+[
+ {
+  "run": "run1",
+  "timestamp": "2026-10-13 03:00:47",
+  "note": "first run, pre-registered thresholds",
+  "claim_under_test": "Re-ranking the CTC n-best of a numeric-cell HTR model with constraints learned from\ntrain-split ground truth (column format/range priors, temporal continuity, learned cross-field ordering,\ndigit-confusion candidates) raises exact-match accuracy on held-out TEST-split numeric cells by >= 1.0\npercentage point over the model's top-1, while changing < 2% of the cells top-1 already got right.",
+  "pre_registered": {
+   "min_gain_pp": 1.0,
+   "max_harm_rate": 0.02
+  },
+  "chosen_on_val": {
+   "weights": {
+    "fmt": 0.5,
+    "rng": 0.5,
+    "tmp": 1,
+    "pair": 0
+   },
+   "margin": 0
+  },
+  "test": {
+   "n": 3922,
+   "top1_em": 0.8980112187659357,
+   "rerank_em": 0.9135645079041306,
+   "gain_pp": 1.55532891381948,
+   "top1_cer": 0.04458852867830424,
+   "rerank_cer": 0.038403990024937655,
+   "harmed": 9,
+   "helped": 70,
+   "harm_rate": 0.002555366269165247,
+   "changed": 109,
+   "impossible_top1": 0.024987251402345742,
+   "impossible_rerank": 0.017338092809790925
+  },
+  "candidate_oracle_em": {
+   "val": 0.9830508474576272,
+   "test": 0.9798572157062723
+  },
+  "ablation_gain_pp": {
+   "without_fmt": 1.4023457419683836,
+   "only_fmt": 0.3059663437021928,
+   "without_rng": 1.4788373278939317,
+   "only_rng": 0.3314635390107088,
+   "without_tmp": 0.4844467108618052,
+   "only_tmp": -1.2238653748087711,
+   "without_pair": 1.55532891381948,
+   "only_pair": 0.0
+  },
+  "per_format": {
+   "d": {
+    "n": 860,
+    "top1_em": 0.9674418604651163,
+    "rerank_em": 0.9790697674418605
+   },
+   "dd.dd": {
+    "n": 663,
+    "top1_em": 0.8944193061840121,
+    "rerank_em": 0.9064856711915535
+   },
+   "dd": {
+    "n": 1777,
+    "top1_em": 0.9425998874507597,
+    "rerank_em": 0.960045019696117
+   },
+   "d.d": {
+    "n": 94,
+    "top1_em": 0.6595744680851063,
+    "rerank_em": 0.6914893617021277
+   },
+   "dd.d": {
+    "n": 308,
+    "top1_em": 0.5422077922077922,
+    "rerank_em": 0.564935064935065
+   },
+   "-dd.d": {
+    "n": 62,
+    "top1_em": 0.8064516129032258,
+    "rerank_em": 0.8064516129032258
+   },
+   "-dd": {
+    "n": 104,
+    "top1_em": 0.9615384615384616,
+    "rerank_em": 0.9807692307692307
+   }
+  },
+  "constraints_learned": {
+   "pairs": 220,
+   "temporal_columns": 68
+  },
+  "passes_gain": true,
+  "passes_harm": true,
+  "passes_claim": true
+ },
+ {
+  "run": "run2-bugfix",
+  "timestamp": "2026-10-13 03:08:22",
+  "note": "bug fix only: unparsable candidates (e.g. '56.') skipped temporal/pair penalties and could win; run1 had 2 such outputs",
+  "claim_under_test": "Re-ranking the CTC n-best of a numeric-cell HTR model with constraints learned from\ntrain-split ground truth (column format/range priors, temporal continuity, learned cross-field ordering,\ndigit-confusion candidates) raises exact-match accuracy on held-out TEST-split numeric cells by >= 1.0\npercentage point over the model's top-1, while changing < 2% of the cells top-1 already got right.",
+  "pre_registered": {
+   "min_gain_pp": 1.0,
+   "max_harm_rate": 0.02
+  },
+  "chosen_on_val": {
+   "weights": {
+    "fmt": 0.5,
+    "rng": 0,
+    "tmp": 1,
+    "pair": 0
+   },
+   "margin": 0
+  },
+  "test": {
+   "n": 3922,
+   "top1_em": 0.8980112187659357,
+   "rerank_em": 0.914329423763386,
+   "gain_pp": 1.631820499745028,
+   "top1_cer": 0.04458852867830424,
+   "rerank_cer": 0.03830423940149626,
+   "harmed": 6,
+   "helped": 70,
+   "harm_rate": 0.0017035775127768314,
+   "changed": 103,
+   "impossible_top1": 0.024987251402345742,
+   "impossible_rerank": 0.017848036715961243
+  },
+  "candidate_oracle_em": {
+   "val": 0.9830508474576272,
+   "test": 0.9798572157062723
+  },
+  "ablation_gain_pp": {
+   "without_fmt": 1.5043345232024476,
+   "only_fmt": 0.3059663437021928,
+   "without_rng": 1.631820499745028,
+   "only_rng": 0.0,
+   "without_tmp": 0.3059663437021928,
+   "only_tmp": 1.5043345232024476,
+   "without_pair": 1.631820499745028,
+   "only_pair": 0.0
+  },
+  "per_format": {
+   "d": {
+    "n": 860,
+    "top1_em": 0.9674418604651163,
+    "rerank_em": 0.9790697674418605
+   },
+   "dd.dd": {
+    "n": 663,
+    "top1_em": 0.8944193061840121,
+    "rerank_em": 0.9064856711915535
+   },
+   "dd": {
+    "n": 1777,
+    "top1_em": 0.9425998874507597,
+    "rerank_em": 0.9622960045019696
+   },
+   "d.d": {
+    "n": 94,
+    "top1_em": 0.6595744680851063,
+    "rerank_em": 0.6914893617021277
+   },
+   "dd.d": {
+    "n": 308,
+    "top1_em": 0.5422077922077922,
+    "rerank_em": 0.5616883116883117
+   },
+   "-dd.d": {
+    "n": 62,
+    "top1_em": 0.8064516129032258,
+    "rerank_em": 0.8064516129032258
+   },
+   "-dd": {
+    "n": 104,
+    "top1_em": 0.9615384615384616,
+    "rerank_em": 0.9807692307692307
+   }
+  },
+  "constraints_learned": {
+   "pairs": 220,
+   "temporal_columns": 68
+  },
+  "passes_gain": true,
+  "passes_harm": true,
+  "passes_claim": true
+ }
+]
